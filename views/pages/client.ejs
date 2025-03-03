@@ -1,0 +1,120 @@
+<%- include('../partials/clientHeader') %>
+
+<main class="main-content">
+	<div class="container">
+		<div class="page">
+			<div class="row">
+				<div class="col-md-9">
+					<div class="slider">
+						<ul class="slides">
+							<% for(i = 0; i<3; i++){  %>
+								<li><a href="#"><img src="<%= movies[i].thumbnail %>" alt="Slide 1" style="width: 100%; height: 600px;"></a></li>
+						<%	} %>
+
+						</ul>
+					</div>
+				</div>
+
+
+
+				<div class="col-md-3">
+					<div class="row">
+
+						<% for(let i = 3; i<=5 ; i++){ %>
+							<div class="col-sm-6 col-md-12">
+								<div class="latest-movie">
+									<a href="#"><img style="height: 180px; object-fit: fill;" src="<%= movies[i].thumbnail %>" alt="Movie 1"></a>
+								</div>
+							</div>
+					<%	} %>
+
+
+					</div>
+				</div>
+			</div> <!-- .row -->
+			<div class="row">
+
+				<% for(let i = 6; i<= 9  ; i++){ %>
+				<div class="col-sm-6 col-md-3">
+					<div class="latest-movie">
+						<a href="#"><img style="height: 180px; object-fit: fill;" src="<%= movies[i].thumbnail %>" alt="Movie 3"></a>
+					</div>
+				</div>
+				<%	} %>
+
+			
+			<div class="row">
+				<div class="col-md-4">
+					<h2 class="section-title">December premiere</h2>
+					<p>Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+					<ul class="movie-schedule">
+						<li>
+							<div class="date">16/12</div>
+							<h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
+						</li>
+						<li>
+							<div class="date">16/12</div>
+							<h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
+						</li>
+						<li>
+							<div class="date">16/12</div>
+							<h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
+						</li>
+						<li>
+							<div class="date">16/12</div>
+							<h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
+						</li>
+					</ul> <!-- .movie-schedule -->
+				</div>
+				<div class="col-md-4">
+					<h2 class="section-title">November premiere</h2>
+					<p>Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+					<ul class="movie-schedule">
+						<li>
+							<div class="date">16/12</div>
+							<h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
+						</li>
+						<li>
+							<div class="date">16/12</div>
+							<h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
+						</li>
+						<li>
+							<div class="date">16/12</div>
+							<h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
+						</li>
+						<li>
+							<div class="date">16/12</div>
+							<h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
+						</li>
+					</ul> <!-- .movie-schedule -->
+				</div>
+				<div class="col-md-4">
+					<h2 class="section-title">October premiere</h2>
+					<p>Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+					<ul class="movie-schedule">
+						<li>
+							<div class="date">16/12</div>
+							<h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
+						</li>
+						<li>
+							<div class="date">16/12</div>
+							<h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
+						</li>
+						<li>
+							<div class="date">16/12</div>
+							<h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
+						</li>
+						<li>
+							<div class="date">16/12</div>
+							<h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
+						</li>
+					</ul> <!-- .movie-schedule -->
+				</div>
+			</div>
+		</div>
+	</div> <!-- .container -->
+</main>
+
+<%- include('../partials/clientFooter') %>
+
+			
