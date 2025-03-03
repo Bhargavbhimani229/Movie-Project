@@ -120,7 +120,6 @@ module.exports.checkCredentials = async (req, res) => {
 };
 
 
-
 module.exports.logOut = (req, res) => {
   res.clearCookie("userId");
   return res.redirect("/singnin");

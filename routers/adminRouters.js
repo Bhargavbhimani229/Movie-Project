@@ -12,7 +12,7 @@ userRouter.get("/singnin", userController.singinPage);
 userRouter.post("/adminCreate", userController.createAdmincredential);
 userRouter.post("/checkCred", userController.checkCredentials);
 
-userRouter.get('/',userController.homePage);
+userRouter.get('/admin',userController.homePage);
 userRouter.get('/movieForm',userController.movieForm);
 userRouter.post('/create',upload,userController.formPage);
 userRouter.get('/tables',userController.tablePage);
