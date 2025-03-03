@@ -7,8 +7,10 @@ const userRouter = Router();
 
 
 
-userRouter.get("/signup", userController.singupPage);
-userRouter.get("/signin", userController.singinPage);
+userRouter.get("/singup", userController.singupPage);
+userRouter.get("/singnin", userController.singinPage);
+userRouter.post("/adminCreate", userController.createAdmincredential);
+userRouter.post("/checkCred", userController.checkCredentials);
 
 userRouter.get('/',userController.homePage);
 userRouter.get('/movieForm',userController.movieForm);

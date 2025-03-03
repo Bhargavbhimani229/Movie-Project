@@ -1,4 +1,5 @@
 const movieData = require("../models/movieSchema");
+const adminCred = require("../models/adminShema");
 const fs = require("fs");
 
 module.exports.homePage = (req, res) => {
@@ -57,10 +58,13 @@ module.exports.movieEdit = async (req, res) => {
 module.exports.update = async (req, res) => {
   try {
     let { id } = req.params;
+    console.log(req.file);
+    
 
     let updateData = { ...req.body, thumbnail: req.file.filename };
     if (req.file) {
       let movie = await movieData.findById(id);
+    
       fs.unlinkSync(movie.thumbnail);
       updateData.thumbnail = req.file.path;
     } else {
@@ -77,15 +81,47 @@ module.exports.update = async (req, res) => {
 
 // Authentication and Client Pages
 module.exports.singupPage = (req, res) => {
-  res.render("./pages/signup");
+  res.render("./pages/singup");
 };
 
 module.exports.singinPage = (req, res) => {
-  res.render("./pages/signin");
+  res.render("./pages/singnin");
 };
+
+module.exports.createAdmincredential = async (req, res) => {
+  let { password, confirm_password } = req.body;
+
+  if (password === confirm_password) {
+    await adminCred.create(req.body);
+    res.render("./pages/singnin", req.body);
+  } else {
+    console.log("Password & Confirm Password should be same!");
+    res.render("./pages/singnin", req.body);
+  }
+};
+
+module.exports.checkCredentials = async (req, res) => {
+  const { username, password } = req.body;
+
+  let cred = await adminCred.findOne({ username });
+
+  if (!cred) {
+    console.log("User not found!");
+    return res.redirect("/singnin");
+  }
+
+  if (cred.username === username && cred.password === password) {
+    res.cookie("userId", cred.id);
+    return res.render("index");
+  } else {
+    console.log("Invalid credentials!");
+    return res.redirect("/singnin");
+  }
+};
+
 
 
 module.exports.logOut = (req, res) => {
   res.clearCookie("userId");
-  return res.redirect("/signin");
+  return res.redirect("/singnin");
 };
