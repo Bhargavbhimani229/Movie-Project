@@ -34,3 +34,15 @@ module.exports.joinusPage = (req, res)=>{
 module.exports.contactPage = (req, res)=>{
   return res.render("./pages/contact.ejs");
 }
+
+module.exports.singlePage = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const movie = await movieData.findById(id);
+    res.render("./pages/single", { movie });
+  } catch (error) {
+    console.log(error.message);
+    res.render("./pages/single", { movie: {} });
+  }
+};

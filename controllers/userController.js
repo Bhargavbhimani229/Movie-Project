@@ -58,17 +58,16 @@ module.exports.movieEdit = async (req, res) => {
 module.exports.update = async (req, res) => {
   try {
     let { id } = req.params;
-    console.log(req.file);
-    
+    let updateData = { ...req.body };
 
-    let updateData = { ...req.body, thumbnail: req.file.filename };
     if (req.file) {
       let movie = await movieData.findById(id);
-    
-      fs.unlinkSync(movie.thumbnail);
-      updateData.thumbnail = req.file.path;
+      if (movie.thumbnail) {
+        fs.unlinkSync(movie.thumbnail); 
+      }
+      updateData.thumbnail = req.file.path; 
     } else {
-      updateData.thumbnail = req.body.old_thumbnail;
+      updateData.thumbnail = req.body.old_thumbnail; 
     }
 
     await movieData.findByIdAndUpdate(id, updateData);
@@ -78,6 +77,7 @@ module.exports.update = async (req, res) => {
     res.redirect("/tables");
   }
 };
+
 
 // Authentication and Client Pages
 module.exports.singupPage = (req, res) => {

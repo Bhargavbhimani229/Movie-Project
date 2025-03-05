@@ -6,6 +6,7 @@ const adminSchema = new mongoose.Schema(
     email: String,
     password: String,
     confirm_password: String,
+    rating: Number,
   },
   { timestamp: true }
 );
